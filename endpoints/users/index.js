@@ -3,6 +3,7 @@ const URL = 'https://jsonplaceholder.typicode.com/users'
 
 const handlers = ({axios}) => ({
   get: async (req, res) => {
+    console.log('Calling')
     const {data} = await axios.get(URL)
     res.send(data)
   },
@@ -10,7 +11,7 @@ const handlers = ({axios}) => ({
     const {body} = req
     console.log(body)
     const {data} = await axios.post(URL, body)
-    res.sendStatus(201)
+    res.send({ data , status : 201 })
   },
   put:  async (req, res) => {
     const {body} = req
